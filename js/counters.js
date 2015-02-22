@@ -1,9 +1,13 @@
 // ------------------------------
 // COUNTERS.JS (PROJECT COUNTERS)
 // ------------------------------
+// NOTE :
+// The loadFromFile & saveToFile methods are disabled (commented) in the code
+// because these methods needs a server-logic like io.js, node.js, php, python, etc.
+// If you want a real exemple, see the link : http://github.com/rootasjey/sideffects
 
 // Initial players array
-var _players = [];
+var _players = ['Coffe Script', 'Jquery', 'Mysqli', 'Mysqlii'];
 
 // Contains player's statistics
 var _stats = {};
@@ -11,7 +15,7 @@ var _stats = {};
 // Fired up when the page is completly loaded
 window.onload = function () {
     // Add players to the table
-    // pushPlayers(_players);
+    pushPlayers(_players);
 
     // Events
     clickPlusOne();
@@ -21,7 +25,8 @@ window.onload = function () {
     clickSaveTaxes();
 
     // Load data
-    loadFromFile();
+    // This method needs a server logic
+    // loadFromFile();
 }
 
 // Add players to the table
@@ -54,34 +59,6 @@ function pushPlayers(players) {
         addRow(player, dataTypes);
         addCard(player, dataTypes);
     }
-}
-
-function pushSinglePlayers(player) {
-    // Contains player's values
-    var player = [];
-
-    // Push initial values
-    player.push(player);
-    player.push(0);
-    player.push("1000K");
-    player.push(0);
-    player.push("+");
-    player.push("-");
-
-    // Contains data types for the player array
-    var dataTypes = [];
-
-    // Values match these types
-    dataTypes.push("name");
-    dataTypes.push("points");
-    dataTypes.push("taxes");
-    dataTypes.push("total");
-    dataTypes.push("plus");
-    dataTypes.push("minus");
-
-    // Add elements to the DOM
-    addRow(player, dataTypes);
-    addCard(player, dataTypes);
 }
 
 // Add a row to the table
@@ -170,7 +147,9 @@ function clickSave() {
         var children = $("#counters tbody tr");
         for (var i = 0; i < children.length +1; i++) {
             if (i == children.length) {
-                saveToFile();
+
+                // This method needs a server logic
+                // saveToFile();
                 break;
             }
             updateCard(children[i]);
