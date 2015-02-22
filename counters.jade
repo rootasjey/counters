@@ -1,0 +1,52 @@
+// ------------------------------
+// COUNTERS.JADE (PROJECT COUNTERS)
+// ------------------------------
+
+doctype html
+
+html(lang='fr')
+  head
+    <meta charset="utf-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    title counters
+    
+    link(type='text/css', rel='stylesheet', href='modules/counters/counters.css')
+    
+  body
+    div.center-content
+      table#counters
+        col(width="200px")
+        col(width="60px")
+        col(width="100px")
+        col(width="200px")
+        thead
+          tr
+            th Name
+            th Points
+            th Taxes
+            th Total
+            th UP
+            th DOWN
+        tbody
+        
+      table#taxes-table
+        tr
+          td Taxes
+          td.taxes-value 1000
+          td 
+            input(type="text", data-type="taxes")
+          td.save-taxes save
+          
+      div.save save
+    
+    script(src='/modules/counters/counters.js')
+    script(src="js/jquery.js")
+    
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
