@@ -23,7 +23,8 @@ window.onload = function () {
     clickSave();
     clickPayed();
     clickSaveTaxes();
-
+    clickAddPlayer();
+    clickRemovePlayer();
     // Load data
     // This method needs a server logic
     // loadFromFile();
@@ -43,6 +44,7 @@ function pushPlayers(players) {
         player.push(0);
         player.push("+");
         player.push("-");
+        player.push("x");
 
         // Contains data types for the player array
         var dataTypes = [];
@@ -54,6 +56,7 @@ function pushPlayers(players) {
         dataTypes.push("total");
         dataTypes.push("plus");
         dataTypes.push("minus");
+        dataTypes.push("delete");
 
         // Add elements to the DOM
         addRow(player, dataTypes);
@@ -88,6 +91,27 @@ function clickPlusOne() {
         points.innerHTML = parseInt(points.innerHTML) + 1;
         refresh(children);
     });
+}
+
+// Add a player
+function clickAddPlayer() {
+   
+    $(".add-player").click(function () {
+
+        var name = $("#add-player input[name='player_name']");
+
+        name = (name.val() !== '') ? name.val() : "guest"+ (new Date()).getTime();
+
+        AddPlayer(name);
+    });
+}
+
+// Delete a player
+function clickRemovePlayer() {
+    $("td[data-type='delete']").click(function () {
+        var tr = this.parentNode;
+        var player_name = tr.attr("name");
+        deletePlayer(player_name);
 }
 
 // Remove +1 to the points counter
@@ -288,3 +312,73 @@ function fillData(data) {
         }
     }
 }
+
+//Delete player in object storage
+function deletePlayer(player_name){
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/counters/delete?name='+player_name, true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.send(null);
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            loadFromFile();
+            alert("Player correctly deleted!");
+        }
+        else if (xhr.readyState == 4 && xhr.status != 200) {
+            
+        }
+    }
+    
+}
+
+//Delete player in object storage
+function AddPlayer(player_name){
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/counters/add?name='+player_name, true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.send(null);
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            loadFromFile();
+            alert("Player correctly added!");
+        }
+        else if (xhr.readyState == 4 && xhr.status != 200) {
+
+        }
+    }
+
+}
+    
+    
+//server side
+    
+    .get('/counters/delete', function (req, res) {
+        // Path to the json file (to save)
+        var file = __dirname + '/public/modules/counters/data.json';
+
+        
+        var obj = jf.readFileSync(file);
+        obj[req.query.name] = null;
+        delete obj[req.query.name];
+        
+        
+        // Open and write in the file
+        jf.writeFileSync(file, obj);
+    })
+    
+    .get('/counters/add', function (req, res) {
+        // Path to the json file (to save)
+        var file = __dirname + '/public/modules/counters/data.json';
+
+
+        var obj = jf.readFileSync(file);
+        obj[req.query.name] = {"fees": 0};
+
+
+        // Open and write in the file
+        jf.writeFileSync(file, obj);
+    })
