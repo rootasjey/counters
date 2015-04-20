@@ -1,20 +1,31 @@
-# counters
-A html/css/js app to count things one by one
+A tiny Reactjs app which count thing.
+For test purposes.
 
-It has a simple logic with a stylesheets, js, and images folers.
+![screenshot](screenshot.gif "screenshot")
 
-It is possible to save the data into a local file but it needs a server logic for now.
+## TOOLS
 
-## screenshots
+### [Material-UI](http://callemall.github.io/material-ui/)
 
-![screenshot](images/counters-screenshot.jpg)
+This is a project that uses [Material-UI](http://callemall.github.io/material-ui/).
 
-## how to run?
+## Installation
+After cloning the repository, install dependencies:
+```
+cd <project folder>/material-ui/example
+npm install
+```
 
-* Download/Clone the folder project into your computer (and unzip it if it's necessary).
-* Run the *index.html* file which is at the root folder.
-* Done!
+Now you can run your local server:
+```
+npm start
+```
 
-## Contribution
+# TIPS
 
-Feel free to contribute to this project or use it in your own project.
+* bind pour accéder aux props
+* _sate_ pour automatiser les refresh
+* modules (components) isolés en variables
+* pas n'importe quel attr sur les composant react (voir https://facebook.github.io/react/docs/tags-and-attributes.html)
+* _className_ pour définir des classes
+* utilisation des _dialog_ modaux et _snackbars_

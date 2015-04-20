@@ -1,0 +1,328 @@
+/* material-ui */
+@import "node_modules/material-ui/src/less/scaffolding.less";
+
+//Define a custom less file to override any variables defined in scaffolding.less
+@import "custom-overrides.less";
+
+@import "node_modules/material-ui/src/less/components.less";
+
+@player-width : 90px;
+
+html,
+body {
+    margin  : 0;
+    padding : 0;
+    height  : 100%;
+}
+
+#super-container {
+    min-height: 100%;
+    position: relative;
+}
+
+#header {
+    padding: 10px;
+}
+
+#body {
+    padding: 10px;
+    padding-bottom: 220px;
+
+    //Your custom app styles
+    .main-container {
+        text-align: center;
+        padding-top: 100px;
+
+        .reset-button {
+        }
+
+        .counters-tab {
+            width: 500px;
+            display: table;
+            margin: auto;
+            margin-top: 40px;
+            border-collapse: collapse;
+            -webkit-box-shadow: 7px 3px 19px -4px rgba(0,0,0,0.75);
+            -moz-box-shadow: 7px 3px 19px -4px rgba(0,0,0,0.75);
+            -ms-box-shadow: 7px 3px 19px -4px rgba(0,0,0,0.75);
+            box-shadow: 7px 3px 19px -4px rgba(0,0,0,0.75);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+
+            thead {
+                color: white;
+                font-size: 1.4em;
+                background: #3498DB;
+
+                th {
+                    padding: 20px;
+                    text-align: center;
+                }
+            }
+
+            td {
+                padding: 10px;
+            }
+
+            tbody tr {
+                cursor: pointer;
+                transition: .5s;
+
+                &:hover {
+                    color: white;
+                    background: #BDC3C7;
+                    transition: .5s;
+                }
+
+                &[selected='true'] {
+                    color: white;
+                    background: #3498DB;
+                }
+            }
+        }
+
+        .counters-controls {
+            top: 30px;
+            color: white;
+            position: relative;
+
+            .counters-controls-button {
+                top: 20px;
+                opacity: 0;
+                margin: 10px;
+                position: relative;
+                transition: .5s;
+            }
+
+            .active-control {
+                animation-duration: 1s;
+                animation-name: bounce;
+            }
+
+            .mui-floating-action-button .mui-floating-action-button-container {
+                background-color: #E74C3C;
+
+                &:hover {
+                    background-color: #C0392B;
+                }
+            }
+        }
+    } // .main-container
+}
+
+#footer {
+    bottom: 0;
+    position: absolute;
+
+    width: 100%;
+    height: 180px;
+    z-index: 0;
+
+    transition: 0.5s;
+
+    &:hover {
+        height: 200px;
+        transition: 0.5s;
+    }
+
+    .bottom-bar {
+      height: 100%;
+      width: 100%;
+      background-color: #2980B9;
+
+      padding: 10px;
+      cursor: pointer;
+      text-align: left;
+      transition: 0.5s;
+
+      .button {
+          margin-left: 20px;
+      }
+
+      .bottom-bar-action {
+          height: 100%;
+          margin-left: 40px;
+          position: relative;
+          overflow: hidden;
+
+          .button {
+              top: -50px;
+              position: relative;
+          }
+
+          .bottom-bar-players {
+              margin-left: 80px;
+              display: inline-block;
+
+              .player {
+                  position: relative;
+                  text-align: center;
+                  display: inline-block;
+
+                  width: @player-width;
+                  overflow: hidden;
+
+                  margin-right: 30px;
+
+                  .player-profil {
+                     height: 80px;
+                     width: 80px;
+                     background: white;
+
+                     top: 20px;
+                     position: relative;
+                     overflow: hidden;
+
+                     border-width: 0;
+                     border-style: solid;
+                     border-color: #E74C3C;
+                     border-radius: 40px;
+
+                     margin: auto;
+                     margin-top: -10px;
+                     margin-bottom: 20px;
+
+                     transition: .5s;
+
+                    &:hover {
+                        height: 85px;
+                        width: 85px;
+                        // border-width: 2px;
+                        transition: .5s;
+                    }
+
+                    .player-profil-clear {
+                        left: -5px;
+                        bottom: 0;
+                        position: absolute;
+
+                        width: @player-width;
+                        height: 20px;
+
+                        display: inline-block;
+                        text-align: center;
+                        color: white;
+
+                        background: #2C3E50;
+                        transition: .5s;
+
+                            &:hover {
+                                height: 100%;
+                                padding-top: 30px;
+                                font-size: 1.4em;
+                                transition: .5s;
+                            }
+
+                        }
+                    }
+
+                    .player-name {
+                        color: white;
+                        display: block;
+                        width: @player-width;
+                    }
+
+                    .player-taxes {
+                        color: white;
+                        display: inline-block;
+                        }
+                    } // .player
+            } // .bottom-bar-players
+      }
+
+      .addPlayerTextField {
+          width: 80%;
+          height: 50px;
+          transition: .5s;
+      }
+
+      .editTaxesTextField {
+          width: 80%;
+          height: 50px;
+          transition: .5s;
+      }
+
+      // A class only to animate the element
+      .bottom-bar-action-hidden {
+          animation-duration: 1s;
+          animation-fill-mode: forwards;
+          animation-name: hideBottomBarAction;
+      }
+
+      // A class only to animate the element
+      .bottom-bar-action-displayed {
+          top: 0px;
+          display: inline-block;
+          animation-duration: 1s;
+          animation-fill-mode: forwards;
+          animation-name: showBottomBarAction;
+      }
+
+      // A class only to animate the element
+      .addPlayerTextField-displayed {
+          animation-duration: 1s;
+          animation-fill-mode: forwards;
+          animation-name: showAddPlayerInput;
+      }
+
+      // A class only to animate the element
+      .addPlayerTextField-hidden {
+          display: none;
+          animation-duration: 1s;
+          animation-fill-mode: forwards;
+          animation-name: hideAddPlayerInput;
+      }
+
+      // A class only to animate the element
+      .editTaxesTextField-displayed {
+          animation-duration: 1s;
+          animation-fill-mode: forwards;
+          animation-name: showeditTaxesInput;
+      }
+
+      // A class only to animate the element
+      .editTaxesTextField-hidden {
+          display: none;
+          animation-duration: 1s;
+          animation-fill-mode: forwards;
+          animation-name: hideeditTaxesInput;
+      }
+
+    } // .bottom-bar
+}
+
+// Animations
+@keyframes bounce {
+    0% { top: 0; }
+    50% { top: -20px;  }
+    100% { top: 0; }
+}
+
+@keyframes hideBottomBarAction {
+    0% { top: 0; opacity: 1; }
+    100% { top: -60px; opacity: 0; height: 0px; }
+}
+
+@keyframes showBottomBarAction {
+    0% { top: -20px; opacity: 0; }
+    100% { top: 0; opacity: 1; height: 100%; }
+}
+
+@keyframes showAddPlayerInput {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes hideAddPlayerInput {
+    0% { top: 0; opacity: 1; }
+    100% {display: none; top: 50px; opacity: 0; }
+}
+
+@keyframes showeditTaxesInput {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes hideeditTaxesInput {
+    0% { top: 0; opacity: 1; }
+    100% {display: none; top: 50px; opacity: 0; }
+}
