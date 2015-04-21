@@ -3,6 +3,14 @@ For test purposes.
 
 ![screenshot](screenshot.gif "screenshot")
 
+
+## DESKTOP APP WITH ELECTRON
+
+I've wrapped the app into a electron app to run the app without a browser.
+
+You can download the app from my [onedrive](https://onedrive.live.com/redir?resid=fe52b46d3240d773!121722&authkey=!ACRnVR273bIir4U&ithint=file%2czip)
+
+
 ## TOOLS
 
 ### [Material-UI](http://callemall.github.io/material-ui/)
