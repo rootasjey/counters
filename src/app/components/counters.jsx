@@ -298,7 +298,7 @@ var Counters = React.createClass({
     // Executes exactly once during the lifecycle
     // of the component and sets up the initial state of the component.
     getInitialState : function () {
-        // return null;
+        // return states;
         return  { players: [] };
     },
 
